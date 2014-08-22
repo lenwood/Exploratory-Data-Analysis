@@ -2,6 +2,9 @@
 
 library(ggplot2)
 library(scales)
+
+NEI <- readRDS("exdata_data_NEI_data/summarySCC_PM25.rds")
+
 coal <- NEI[NEI$SCC %in% SCC[grep("Coal", SCC$SCC.Level.Three), 1],]
 coalEmissions <- with(coal, aggregate(Emissions, by=list(year), sum))
 names(coalEmissions) <- c("Year", "Emissions")
